@@ -1,0 +1,57 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background: #FAFCFF;
+}
+
+#login-header {
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    justify-content: center;
+    padding: 3% 2% 2% 2%;
+    margin: 0%;  
+    background: #FAFCFF;
+}
+
+
+#login-area {
+    padding: 7%;
+}
+
+
+#input-username, 
+#input-password {
+    text-align: center;
+}
+
+#button-area, 
+#redirect-area {
+    display: flex;
+    justify-content: center;
+}
+
+#signup {
+    text-decoration: none;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    background: #E9ECEF;
+    padding: 1%;
+}
+
+#about {
+    text-decoration: none;
+    color: #212121;
+}
+
+#about a:hover {
+    color: #999;
+}
+
+#button-area {
+    padding: 1%;
+}
