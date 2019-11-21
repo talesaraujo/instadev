@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+var postsRouter = require('./routes/posts');
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use('/', postsRouter);
 
 
 module.exports = app;
