@@ -8,8 +8,7 @@ const authMiddleware = require('../middlewares/auth');
 router.use(authMiddleware);
 
 
-// Test authorization middleware
-router.get('/test', (req, res) => {
+router.get('/posts', (req, res) => {
     return res.send( { ok: true } );
 });
 

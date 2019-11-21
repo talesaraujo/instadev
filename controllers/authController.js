@@ -11,10 +11,10 @@ function generateToken(params = {}) {
 
 
 const register = async (req, res) => {
-    const { email } = req.body;
+    const { username } = req.body;
 
     try {
-        if (await User.findOne({ email })) {
+        if (await User.findOne({ username })) {
             return res.status(409).send({ error: 'User already exists' })
         }
 

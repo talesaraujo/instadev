@@ -21,22 +21,22 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
-    followers: {
-        type: Array,
+    followers: [{
+        type: String,
         //required: true
-    },
-    following: {
-        type: Array,
+    }],
+    following: [{
+        type: String,
         //required: true
-    },
-
+    }],
     profilePic: {
         type: String
         //required: true
     },
-    posts: {
-        type: Array
-    },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
     createdAt: {
         type: Date,
         default: Date.now
