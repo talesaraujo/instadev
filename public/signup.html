@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
 
@@ -28,22 +29,22 @@
             <div id="signup-area" class="col-md-6">
                 <form>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-sm" id="input-email" placeholder="email">
+                        <input type="email" class="form-control form-control-sm" id="input-email" placeholder="email" v-model="email">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" id="input-fullname" placeholder="fullname">
+                        <input type="text" class="form-control form-control-sm" id="input-fullname" placeholder="fullname" v-model="fullname">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-sm" id="input-username" aria-describedby="emailHelp" placeholder="username">
+                        <input type="text" class="form-control form-control-sm" id="input-username" aria-describedby="emailHelp" placeholder="username" v-model="username">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control form-control-sm" id="input-password" placeholder="password">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-sm" id="input-confim-password" placeholder="confirm password">
+                        <input type="password" class="form-control form-control-sm" id="input-confim-password" placeholder="confirm password" v-model="password">
                     </div>
                     <div id="button-area">
-                        <button type="submit" class="btn btn-info btn-sm" id="signin-button">Sign Up</button>
+                        <button type="submit" class="btn btn-info btn-sm" id="signup-button" v-on:click="submit()">Sign Up</button>
                     </div>
                     <br>
                     <div id="redirect-area">       
@@ -53,15 +54,20 @@
             </div>
         </div>
     </div>
-
+    
     <footer class="footer">
         <div class="container" id="about">
           <a id="about" href="https://github.com/talesaraujo/instadev" target="_blank">About Us</a>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+    
+    <script src="js/signup.js"></script>
 </body>
 </html>
