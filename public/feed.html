@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/feed.css">
+
+    <title>Instadev</title>
+</head>
+
+<body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="brand" class="navbar-brand" href="#">instadev</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex justify-content-center ml-auto">
+                <form class="form-inline">
+                    <input id="search-field" class="form-control form-control-sm" type="search" placeholder="Search" aria-label="Search">
+                    <!--
+                    <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    -->
+                </form>
+            </div>
+            
+            <div id="navbar-buttons" class="btn-group d-flex justify-content-center ml-auto" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-sm btn-outline-light">
+                    <img src="img/icons/notifications.png">
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-light">
+                    <img src="img/icons/profile.png">
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="feed" class="container">
+        <!--
+            POSTS
+        -->
+    </div>
+    
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
+    <script src="js/feed.js"></script>
+</body>
+</html>
