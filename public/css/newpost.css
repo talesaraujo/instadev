@@ -1,0 +1,9 @@
+#browse-file,
+#caption-field,
+#button-area {
+    margin: 1%;
+} 
+
+button {
+    margin: 0.25%;
+}
