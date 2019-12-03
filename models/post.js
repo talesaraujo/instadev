@@ -1,4 +1,9 @@
 const mongoose = require('../db/index');
+const fs = require('fs');
+const path = require('path');
+const { promisify } = require('util');
+
+const BASEURL = "http://localhost:3000";
 
 
 const PostSchema = new mongoose.Schema({
@@ -7,8 +12,16 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    imgsrc: {
-        // Temp
+    imgName: {
+        type: String  
+    },
+    imgSize: {
+        type: Number
+    },
+    imgKey: {
+        type: String
+    },
+    imgUrl: {
         type: String
     },
     caption: {
@@ -28,6 +41,15 @@ const PostSchema = new mongoose.Schema({
     },
 });
 
+PostSchema.pre('save', function() {
+    if (!this.imgUrl) {
+        this.imgUrl = `${BASEURL}/${this.imgKey}`;
+    }
+});
+
+PostSchema.pre('remove', function() {
+    return promisify(fs.unlink)(path.resolve(__dirname, '..', 'tmp', 'uploads', this.imgKey));
+});
 
 const Post = mongoose.model('Post', PostSchema);
 

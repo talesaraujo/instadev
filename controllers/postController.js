@@ -30,7 +30,13 @@ const fetchPost = async (req, res) => {
 
 const createPost = async (req, res) => {
     try {
-        post = await Post.create({ ...req.body, user: req.userId}); // Adding userId ref (original poster)
+        const post = await Post.create({ 
+            user: req.userId,                   // Adding userId ref (original poster)
+            imgName: req.file.originalname,
+            imgSize: req.file.size,
+            imgKey: req.file.filename,
+            ...req.body,
+        }); 
 
         res.send({ post });
     }
@@ -57,7 +63,9 @@ const editPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
     try {
-        const post = await Post.findByIdAndRemove(req.params.postId);
+        const post = await Post.findById(req.params.postId);
+
+        await post.remove();
 
         return res.send({ post });
     }
