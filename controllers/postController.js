@@ -12,13 +12,12 @@ const getPosts = (req, res) => {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
-        if (query.length == 0) {
+        if (query.rowCount == 0) {
             return res.status(404).send({ 
                 error: "Either given user was not found or there is no post associated with this user" }
             );
         }
-        console.log(query);
-        return res.send(query);
+        return res.send(query.rows);
     });
 }
 
@@ -55,7 +54,7 @@ const deletePost = (req, res) => {
         if (query.rowCount == 0) {
             return res.status(404).send({ error: "Given post was not found" });
         }
-        return res.status(200).send(query);
+        return res.status(200).send();
     });
 }
 

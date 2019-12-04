@@ -11,7 +11,7 @@ const getUsers = (req, res) => {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
-        return res.send(query);
+        return res.send(query.rows);
     });
 }
 
@@ -24,10 +24,10 @@ const fetchUser = (req, res) => {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
-        if (!query) {
+        if (query.rowCount == 0) {
             return res.status(404).send({ error: "User not found" });
         }
-        return res.status(200).send(query);
+        return res.status(200).send(query.rows[0]);
     });
 }
 
@@ -63,10 +63,13 @@ const editUser = (req, res) => {
         profile_pic
     }
 
-    User.update(userMod, (err) => {
+    User.update(userMod, (err, query) => {
         if (err) {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
+        }
+        if (query.rowCount == 0) {
+            return res.status(404).send({ error: "Given user was not found" });
         }
         return res.status(200).send(userMod);
     });
@@ -84,7 +87,7 @@ const deleteUser = (req, res) => {
         if (query.rowCount == 0) {
             return res.status(404).send({ error: "Given user was not found" });
         }
-        return res.status(200).send(query);
+        return res.status(200).send();
     });
 }
 
@@ -98,6 +101,7 @@ const authenticate = (req, res) => {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
+
         if (!user) {
             return res.status(404).send({ error: "User not found" });
         }
@@ -107,6 +111,7 @@ const authenticate = (req, res) => {
         }
 
         session.username = username;
+
         return res.status(200).send({user, auth: "OK"});
     });
 }
