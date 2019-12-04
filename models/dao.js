@@ -26,6 +26,19 @@ function UserDao () {
         );
     }
 
+    this.search = function (username, callback) {
+        let client = this.newClient();
+        client.connect();
+        client.query(
+            'SELECT username FROM users WHERE username LIKE $1',
+            ['%'+username+'%'],
+            (err, res) => {
+                callback(err, res.rows);
+                client.end();
+            }
+        )
+    }
+
     this.list = function (callback) {
         let client = this.newClient();
         client.connect();
