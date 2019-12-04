@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+
+    <title>Instadev - Sign Up</title>
+</head>
+<body>
+    <div class="jumbotron" id="login-header">
+        <h1 class="display-8">instadev</h1>        
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="image-area" class="col-md-6" id="image">
+                <figure class="figure">
+                    <img src="img/gnome_developers_2.jpg" class="figure-img img-fluid rounded" alt="happy_gnome_devs">
+                    <figcaption class="figure-caption text-center">Join our awesome developers community. Today.</figcaption>
+                </figure>
+            </div>
+
+            <div id="signup-area" class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-control-sm" id="input-email" placeholder="email" v-model="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" id="input-fullname" placeholder="fullname" v-model="fullname">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" id="input-username" aria-describedby="emailHelp" placeholder="username" v-model="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-sm" id="input-password" placeholder="password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-sm" id="input-confim-password" placeholder="confirm password" v-model="password">
+                    </div>
+                    <div id="button-area">
+                        <button type="submit" class="btn btn-info btn-sm" id="signup-button" v-on:click="submit()">Sign Up</button>
+                    </div>
+                    <br>
+                    <div id="redirect-area">       
+                        <p>Already have an account? <a id="signup" href="login.html">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container" id="about">
+          <a id="about" href="https://github.com/talesaraujo/instadev" target="_blank">About Us</a>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+    
+    <script src="js/signup.js"></script>
+</body>
+</html>
