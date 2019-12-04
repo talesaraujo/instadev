@@ -92,6 +92,7 @@ const deleteUser = (req, res) => {
 
 const authenticate = (req, res) => {
     const { username, password } = req.body;
+    const session = req.session;
 
     User.get(username, (err, user) => {
         if (err) {
@@ -106,6 +107,7 @@ const authenticate = (req, res) => {
             return res.status(400).send({ error: "Invalid password" });
         }
 
+        session.username = username;
         return res.status(200).send({user, auth: "OK"});
     });
 }
