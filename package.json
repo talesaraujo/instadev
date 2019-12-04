@@ -18,7 +18,8 @@
     "express-session": "^1.17.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
-    "pg": "^7.14.0"
+    "pg": "^7.14.0",
+    "pg-error-constants": "^1.0.0"
   },
   "author": "",
   "license": "ISC"

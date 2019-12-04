@@ -1,4 +1,6 @@
 const { UserDao } = require('../models/dao');
+const { UNIQUE_VIOLATION } = require('pg-error-constants');
+
 
 const User = new UserDao();
 
@@ -39,7 +41,7 @@ const createUser = (req, res) => {
     }
 
     User.create(newUser, (err) => {
-        if (err && err.code == '23505') {
+        if (err && err.code == UNIQUE_VIOLATION) {
             return res.status(409).send({ error: 'User already exists'});
         }
         if (err) {
@@ -62,9 +64,6 @@ const editUser = (req, res) => {
     }
 
     User.update(userMod, (err) => {
-        if (err && err.code == '23505') {
-            return res.status(409).send({ error: 'User already exists' });
-        }
         if (err) {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
@@ -104,7 +103,7 @@ const authenticate = (req, res) => {
         }
 
         if (user.password != password) {
-            return res.status(400).send({ error: "Invalid password" });
+            return res.status(401).send({ error: "Invalid password" });
         }
 
         session.username = username;
@@ -112,6 +111,7 @@ const authenticate = (req, res) => {
     });
 }
 
+
 module.exports = {
-    getUsers, fetchUser ,createUser, editUser, deleteUser, authenticate
+    getUsers, fetchUser, createUser, editUser, deleteUser, authenticate
 }

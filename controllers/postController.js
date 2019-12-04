@@ -1,4 +1,5 @@
 const { PostDao } = require('../models/dao');
+const { UNIQUE_VIOLATION } = require('pg-error-constants');
 
 const Post = new PostDao();
 
@@ -31,7 +32,7 @@ const createPost = (req, res) => {
     }
 
     Post.create(newPost.username, newPost.image, (err) => {
-        if (err && err.code == '23505') {
+        if (err && err.code == UNIQUE_VIOLATION) {
             return res.status(409).send({ error: 'User already exists'});
         }
         if (err) {
