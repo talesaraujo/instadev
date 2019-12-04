@@ -23,10 +23,10 @@ app.use('/', postsRouter);
 
 app.get('/', (req, res) => {
     if (req.session.username != undefined) {
-        return res.end('PAGINA PRINCIPAL');
+        return res.sendFile(__dirname+"/public/profile.html");
     }
     else {
-        return res.end('PAGINA DE LOGIN');
+        return res.sendFile(__dirname+"/public/login.html");
     }
 });
 
