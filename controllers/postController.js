@@ -55,9 +55,7 @@ const deletePost = (req, res) => {
         if (query.rowCount == 0) {
             return res.status(404).send({ error: "Given post was not found" });
         }
-
-        console.log(query);
-        return res.status(200).send(query.rows[0]);
+        return res.status(200).send();
     });
 }
 
