@@ -90,6 +90,26 @@ const deleteUser = (req, res) => {
 }
 
 
+const authenticate = (req, res) => {
+    const { username, password } = req.body;
+
+    User.get(username, (err, user) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({ error: "Internal server error" });
+        }
+        if (!user) {
+            return res.status(404).send({ error: "User not found" });
+        }
+
+        if (user.password != password) {
+            return res.status(400).send({ error: "Invalid password" });
+        }
+
+        return res.status(200).send({user, auth: "OK"});
+    });
+}
+
 module.exports = {
-    getUsers, fetchUser ,createUser, editUser, deleteUser
+    getUsers, fetchUser ,createUser, editUser, deleteUser, authenticate
 }

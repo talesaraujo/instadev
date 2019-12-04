@@ -12,6 +12,9 @@ router.get('/users/:username', userController.fetchUser);
 // Register route
 router.post('/signup', userController.createUser);
 
+// Auth route
+router.post('/login', userController.authenticate);
+
 router.put('/users/:username', userController.editUser);
 
 router.delete('/users/:username', userController.deleteUser);
