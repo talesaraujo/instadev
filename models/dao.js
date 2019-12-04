@@ -20,7 +20,7 @@ function UserDao () {
             'SELECT * FROM USERS WHERE username = $1',
             [username],
             (err, res) => {
-                callback(err, res.rows[0]);
+                callback(err, res);
                 client.end();
             }
         );
@@ -33,7 +33,7 @@ function UserDao () {
             'SELECT username FROM users WHERE username LIKE $1',
             ['%'+username+'%'],
             (err, res) => {
-                callback(err, res.rows);
+                callback(err, res);
                 client.end();
             }
         )
@@ -43,7 +43,7 @@ function UserDao () {
         let client = this.newClient();
         client.connect();
         client.query('SELECT * FROM USERS', (err, res) => {
-            callback(err, res.rows);
+            callback(err, res);
             client.end();
         });
     }
@@ -54,8 +54,8 @@ function UserDao () {
         client.query(
             'INSERT INTO USERS (username, password) VALUES ($1, $2)',
             [user.username, user.password],
-            (err, _) => {
-                callback(err);
+            (err, res) => {
+                callback(err, res);
                 client.end();
             }
         );
@@ -67,8 +67,8 @@ function UserDao () {
         client.query(
             'UPDATE USERS SET password = $2, profile_pic = $3 WHERE username = $1',
             [user.username, user.password, user.profile_pic],
-            (err, _) => {
-                callback(err);
+            (err, res) => {
+                callback(err, res);
                 client.end();
             }
         );
@@ -98,7 +98,7 @@ function PostDao () {
             'SELECT * FROM posts WHERE username = $1',
             [username],
             (err, res) => {
-                callback(err, res.rows);
+                callback(err, res);
                 client.end();
             }
         );
@@ -110,8 +110,8 @@ function PostDao () {
         client.query(
             'INSERT INTO POSTS (username, post) VALUES ($1, $2)',
             [username, image],
-            (err, _) => {
-                callback(err);
+            (err, res) => {
+                callback(err, res);
                 client.end();
             }
         );
