@@ -30,6 +30,13 @@ app.set('view engine', 'ejs');
 app.use('/', usersRouter);
 app.use('/', postsRouter);
 
+app.get('/editor', (req, res) => {
+    if (req.session.username) {
+        return res.render('editor', { username: req.session.username });
+    }
+    res.redirect('/');
+})
+
 app.get('/', (req, res) => {
     const erro = req.session.erro;
     delete req.session.erro;

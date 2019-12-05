@@ -52,10 +52,11 @@ const searchUsers = (req, res) => {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
-        if (query.rowCount == 0) {
-            return res.status(404).send({ error: "No similar user with this username" });
-        }
-        return res.status(200).send(query.rows);
+        let env = {
+            username: req.session.username,
+            users: query.rows
+        };
+        return res.render('search', env);
     });
 }
 

@@ -62,39 +62,20 @@
             </div>
         </div>
     </nav>
-
-    <div id="feed" class="container">
-        <% for (post in posts) { %>
-            <div id="post">
-                <div class="row justify-content-center">
-                    <div class="col-7">
-                        <div class="card border-secondary">
-                            <img
-                                class="card-img-top img-thumbnail img-fluid"
-                                alt="user-post"
-                                src="<%= posts[post].post %>"
-                            >
-  
-                            <% if (username == profile) { %>
-                                <!--Botao para deletar -->
-                                <div class="row justify-content-center">
-                                    <button
-                                        id="delb"
-                                        onclick="window.location='/posts/delete/<%= posts[post].id %>'"
-                                        class="btn btn-danger"
-                                    >
-                                        <a>Delete</a>
-                                    </button>
-                                </div>
-                            <% } %>
-                        </div>
+        
+    <section id="search-results" class="container">
+        <% if (users.length == 0) { %>
+            <p>Nenhum perfil com esse nome encontrado :(</p>
+        <% } else { %>
+            <% for (user in users) { %>
+                <a href="/users/<%= users[user].username %>">
+                    <div class="container search-result-entry">
+                        <%= users[user].username %>
                     </div>
-                </div>
-                </br>
-            </div>
+                </a>
+            <% } %>
         <% } %>
-    </div>
-    
+    </section>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
