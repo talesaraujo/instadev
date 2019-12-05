@@ -1,8 +1,9 @@
-const { UserDao } = require('../models/dao');
+const { UserDao, PostDao } = require('../models/dao');
 const { UNIQUE_VIOLATION } = require('pg-error-constants');
 
 
 const User = new UserDao();
+const Post = new PostDao();
 
 
 const getUsers = (req, res) => {
@@ -27,7 +28,18 @@ const fetchUser = (req, res) => {
         if (query.rowCount == 0) {
             return res.status(404).send({ error: "User not found" });
         }
-        return res.status(200).send(query.rows[0]);
+        Post.list(query.rows[0].username, (err, result) => {
+            if (err) console.log(err);
+
+            let env = {
+                erro: err,
+                posts: result.rows.reverse(),
+                username: req.session.username,
+                profile: username
+            };
+
+            return res.render('profile', env);
+        })
     });
 }
 
