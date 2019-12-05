@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
             // console.log(result.rows);
             let env = {
                 erro,
-                posts: result.rows,
+                posts: result.rows.reverse(),
                 username: req.session.username,
                 profile: req.session.username
             };

@@ -72,9 +72,12 @@
                             <% if (username == profile) { %>
                                 <!--Botao para deletar -->
                                 <div class="row justify-content-center">
-                                    <button id="delb"
-                                            class="btn btn-danger">
-                                            <a>Delete</a>
+                                    <button
+                                        id="delb"
+                                        onclick="window.location='/posts/delete/<%= posts[post].id %>'"
+                                        class="btn btn-danger"
+                                    >
+                                        <a>Delete</a>
                                     </button>
                                 </div>
                             <% } %>

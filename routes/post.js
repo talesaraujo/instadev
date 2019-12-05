@@ -9,7 +9,7 @@ router.get('/posts/:username', postController.getPosts);
 
 router.post('/posts', postController.createPost);
 
-router.delete('/posts/:id', postController.deletePost);
+router.get('/posts/delete/:id', postController.deletePost);
 
 
 
