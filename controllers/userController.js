@@ -32,6 +32,22 @@ const fetchUser = (req, res) => {
 }
 
 
+const searchUsers = (req, res) => {
+    const { username } = req.params;
+
+    User.search(username, (err, query) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({ error: "Internal server error" });
+        }
+        if (query.rowCount == 0) {
+            return res.status(404).send({ error: "No similar user with this username" });
+        }
+        return res.status(200).send(query.rows);
+    });
+}
+
+
 const createUser = (req, res) => {
     const { username, password } = req.body;
 
@@ -118,5 +134,5 @@ const authenticate = (req, res) => {
 }
 
 module.exports = {
-    getUsers, fetchUser, createUser, editUser, deleteUser, authenticate
+    getUsers, fetchUser, searchUsers, createUser, editUser, deleteUser, authenticate
 }

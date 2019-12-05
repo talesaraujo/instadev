@@ -9,6 +9,9 @@ router.get('/users', userController.getUsers);
 
 router.get('/users/:username', userController.fetchUser);
 
+// Search route
+router.get('/users/search/:username', userController.searchUsers);
+
 // Register route
 router.post('/signup', userController.createUser);
 
