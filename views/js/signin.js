@@ -13,9 +13,7 @@ var app = new Vue({
                 'password': this.password
             };
     
-            try {
-                alert(`${user.username}\n${user.password}`);
-    
+            try {    
                 var response = await axios.post(this.url, user);
     
                 console.log(response.data);
