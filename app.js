@@ -30,12 +30,16 @@ app.get('/', (req, res) => {
     delete req.session.erro;
     if (req.session.username != undefined) {
         (new PostDao()).list(req.session.username, (err, result) => {
+            // console.log(result.rows);
             let env = {
                 erro,
-                posts: [],
-                user: req.session.username,
+                posts: result.rows,
+                username: req.session.username,
                 profile: req.session.username
             };
+            for (i = 0; i < env.posts.length; i++) {
+                env.posts[i].post = env.posts[i].post.toString('utf8');
+            }
             return res.render("profile", env);
         });
     }

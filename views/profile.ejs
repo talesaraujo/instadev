@@ -51,42 +51,28 @@
             <div id="post">
                 <div class="row justify-content-center">
                     <div class="col-7">
-                        <div
-                             class="card border-secondary">
+                        <div class="card border-secondary">
                             <img
                                 class="card-img-top img-thumbnail img-fluid"
                                 alt="user-post"
-                                src="data:image/png;base64," + post.post>
+                                src="<%= posts[post].post %>"
+                            >
   
-                            <!--Botao para deletar -->
-                            <div class="row justify-content-center">
-                                <button id="delb"
-                                        class="btn btn-danger">
-                                        <a>Delete</a>
-                                </button>
-                            </div>
-  
-                            
-                        <!--<div class="row justify-content-center">
-                                <button id="likeb"
-                                        class="btn border-secondary">
-                                        <a id="likeb-conte">Like</a>
-                                </button>
-                            </div>
-                            
-                            <div id="img-card-body"
-                                 class="card-body">
-                                 <div class="row justify-content-center">
-                                     Recuperar o numero de likes e colocar no n
-                                     <a id="nlike">n people liked this post!</a>
-                                 </div>
-                            </div> -->
+                            <% if (username == profile) { %>
+                                <!--Botao para deletar -->
+                                <div class="row justify-content-center">
+                                    <button id="delb"
+                                            class="btn btn-danger">
+                                            <a>Delete</a>
+                                    </button>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>
                 </br>
             </div>
-          <% } %>
+        <% } %>
     </div>
     
 
