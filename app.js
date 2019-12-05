@@ -9,6 +9,8 @@ const session = require('express-session');
 var usersRouter = require('./routes/user');
 var postsRouter = require('./routes/post');
 
+const { PostDao } = require('./models/dao');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -27,7 +29,15 @@ app.get('/', (req, res) => {
     const erro = req.session.erro;
     delete req.session.erro;
     if (req.session.username != undefined) {
-        return res.render("profile", { erro });
+        (new PostDao()).list(req.session.username, (err, result) => {
+            let env = {
+                erro,
+                posts: [],
+                user: req.session.username,
+                profile: req.session.username
+            };
+            return res.render("profile", env);
+        });
     }
     else {
         return res.render("login", { erro });
