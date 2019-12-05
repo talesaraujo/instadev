@@ -2,7 +2,7 @@
 
 Aplicação desenvolvida para a disciplina de Desenvolvimento de Software para a Web (CK0207).
 
-O `instadev` é uma aplicação de persistência e de edição de imagens O código do editor pode ser encontrado [aqui](https://github.com/Mackirac/photo-web/tree/image-processor). Contém um sistema de login de usuários, onde um usuário poderá ver suas imagens cadastradas, pesquisar por outros usuários e ver as imagens deles, e contém um link que redireciona para o editor, onde ele poderá aplicar edições sobre uma imagem escolhida.
+O `instadev` é uma aplicação de persistência e de edição de imagens. O código do editor pode ser encontrado [aqui](https://github.com/Mackirac/photo-web/tree/image-processor). Contém um sistema de login de usuários, onde um usuário poderá ver suas imagens cadastradas, pesquisar por outros usuários e ver as imagens deles, e contém um link que redireciona para o editor, onde ele poderá aplicar edições sobre uma imagem escolhida.
 
 ## Tecnologias aplicadas
 
