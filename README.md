@@ -2,14 +2,20 @@
 
 Aplicação desenvolvida para a disciplina de Desenvolvimento de Software para a Web (CK0207).
 
-O `instadev` é uma aplicação de persistência de imagens. Contém um sistema de login de usuários, onde um usuário poderá ver suas imagens cadastradas, pesquisar por outros usuários e ver as imagens deles.
+O `instadev` é uma aplicação de persistência e de edição de imagens. Contém um sistema de login de usuários, onde um usuário poderá ver suas imagens cadastradas, pesquisar por outros usuários e ver as imagens deles, e contém um link que redireciona para o editor, onde ele poderá aplicar edições sobre uma imagem escolhida.
 
 ## Tecnologias aplicadas
-* Boostrap
-* VueJS
-* NodeJS
-* PostgreSQL
 
+Clientside
+* Bootstrap
+* VueJS
+
+Serverside
+* NodeJS
+* Python (Django)
+
+Database
+* PostgreSQL
 
 ## Como rodar o projeto
 Dentro da pasta `setup` estão os arquivos com a estrutura de tabelas para que a aplicação funcione corretamente. Se você dispõe do Docker instalado, pode utilizar o arquivo `docker-compose` dentro desta pasta e utilizar o comando
