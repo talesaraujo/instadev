@@ -31,15 +31,21 @@
             </div>
             
             <div id="navbar-buttons" class="btn-group d-flex justify-content-center ml-auto" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-sm btn-outline-light">
-                    <a href="newpost.html">
-                        <img src="img/icons/newpost.png">
-                    </a>
+                <input type="file" id="post-input" style="display: none;" onchange="post()" />
+
+                <button
+                    type="button"
+                    class="btn btn-sm btn-outline-light"
+                    onclick="document.querySelector('#post-input').click()"
+                >
+                    <img src="img/icons/newpost.png">
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-light">
-                    <img src="img/icons/notifications.png">
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-light">
+
+                <button
+                    type="button"
+                    class="btn btn-sm btn-outline-light"
+                    onclick="window.location = '/'"
+                >
                     <img src="img/icons/profile.png">
                 </button>
             </div>
@@ -84,5 +90,18 @@
     <script src="js/axios.min.js"></script>
 
     <script src="js/feed.js"></script>
+
+    <script>
+        function post() {
+            let ajax = new XMLHttpRequest();
+            ajax.open("POST", "/posts");
+            ajax.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert('DONE');
+                }
+            }
+            ajax.send();
+        }
+    </script>
 </body>
 </html>
