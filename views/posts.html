@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Instadev</title>
+  </head>
+
+  <body>
+  	
+  	<nav id="navbar"
+  		 class="navbar navbar-expand-lg navbar-light bg-light">
+
+  		<a id="brand"
+  		   class="navbar-brand"
+  		   href="#">instadev</a>
+
+  		<button class="navbar-toggler"
+  				type="button"
+  				data-toggle="collapse"
+  				data-target="#navbarSupportedContent"
+  				aria-controls="navbarSupportedContent"
+  				aria-expanded="false"
+  				aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse"
+        	 id="navbarSupportedContent">
+
+        	 <div class="d-flex justify-content-center ml-auto">
+                <form class="form-inline">
+                    <input id="search-field" 
+                    	   class="form-control form-control-sm"
+                    	   type="search"
+                    	   placeholder="Search"
+                    	   aria-label="Search">
+                </form>
+            </div>
+
+            <div id="navbar-buttons"
+                 class="btn-group d-flex justify-content-center ml-auto"
+                 role="group"
+                 aria-label="Basic example">
+
+                <button type="button"
+                		class="btn btn-sm btn-outline-light">
+                    <a href="newpost.html">
+                        <img src="img/icons/newpost.png">
+                    </a>
+                </button>
+
+                <button type="button"
+                		class="btn btn-sm btn-outline-light">
+                    <img src="img/icons/notifications.png">
+                </button>
+
+                <button type="button"
+                		class="btn btn-sm btn-outline-light">
+                    <img src="img/icons/profile.png">
+                </button>
+            </div>
+        </div>
+  	</nav>
+
+  	</br>
+
+  	<div class="container">
+  		<!-- Coloca a div POST dentro de uma div com a manipulaçao do vue, v-for nos posts-->
+  		<div id="post">
+	  		<div class="row justify-content-center">
+	  			<div class="col-7">
+			  		<div id="img-card-base"
+			  			 class="card border-secondary">
+			  			<img id="img"
+			  				 class="card-img-top img-thumbnail img-fluid"
+			  				 alt="user-post"
+			  				 src="img/happy_devs.jpg">
+
+			  			<!--Botao para deletar -->
+			  			<div class="row justify-content-center">
+			  				<button id="delb"
+			  						class="btn btn-danger">
+			  						<a>Delete</a>
+			  				</button>
+			  			</div>
+
+			  			
+			  		<!--<div class="row justify-content-center">
+			  				<button id="likeb"
+			  						class="btn border-secondary">
+			  						<a id="likeb-conte">Like</a>
+			  				</button>
+			  			</div>
+			  			
+			  			<div id="img-card-body"
+			  				 class="card-body">
+			  				 <div class="row justify-content-center">
+			  				 	Recuperar o numero de likes e colocar no n
+			  				 	<a id="nlike">n people liked this post!</a>
+			  				 </div>
+			  			</div> -->
+			  		</div>
+	  			</div>
+	  		</div>
+	  		</br>
+	  	</div>
+  	</div>
+  	
+  	
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+#navbar {
+    padding: .5% 5% .5% 5%;
+}
+
+#brand {
+    font-family: "Fira Code";
+    font-size: 22px;
+}
+
+#search-field {
+    text-align: center;
+}
+
+#navbar-buttons {
+    margin-left: 0%;
+}

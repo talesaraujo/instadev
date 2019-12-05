@@ -40,15 +40,17 @@ const createUser = (req, res) => {
         password
     }
 
-    User.create(newUser, (err) => {
+    User.create(newUser, (err, result) => {
         if (err && err.code == UNIQUE_VIOLATION) {
-            return res.status(409).send({ error: 'User already exists'});
+            req.session.erro = 'Usuário já existente';
+            return res.redirect('/');
         }
         if (err) {
-            console.log(error);
-            return res.status(500).send({ error: 'Something else'});
+            console.log(err);
+            return res.status(500).end();
         }
-        return res.status(201).send(newUser);
+        req.session.username = newUser.username;
+        return res.redirect('/');
     });
 }
 
@@ -96,26 +98,24 @@ const authenticate = (req, res) => {
     const { username, password } = req.body;
     const session = req.session;
 
-    User.get(username, (err, user) => {
+    User.get(username, (err, result) => {
         if (err) {
             console.log(err);
             return res.status(500).send({ error: "Internal server error" });
         }
 
-        if (!user) {
-            return res.status(404).send({ error: "User not found" });
+        let user = result.rows[0];
+
+        if (!user || user.password != password) {
+            console.log('Credenciais inválidas');
+            if (user) console.log(user);
+            session.erro = 'Credenciais inválidas';
         }
-
-        if (user.password != password) {
-            return res.status(401).send({ error: "Invalid password" });
-        }
-
-        session.username = username;
-
-        return res.status(200).send({user, auth: "OK"});
+        else session.username = username;
+        
+        return res.redirect('/');
     });
 }
-
 
 module.exports = {
     getUsers, fetchUser, createUser, editUser, deleteUser, authenticate
