@@ -23,22 +23,23 @@ const getPosts = (req, res) => {
 
 
 const createPost = (req, res) => {
-    const { username, image } = req.body;
+    let body = req.body.split('\n');
+    let username = body[1].split('=')[1].replace(/\s/g, '');
+    let image = body[0].substring(body[0].search('=') + 1);
 
     let newPost = {
         username,
         image
     }
 
+    console.log(newPost.username);
+
     Post.create(newPost.username, newPost.image, (err) => {
-        if (err && err.code == UNIQUE_VIOLATION) {
-            return res.status(409).send({ error: 'User already exists'});
-        }
         if (err) {
-            console.log(error);
+            console.log(err);
             return res.status(500).send({ error: "Something else that I'm lazy to figure it out"});
         }
-        return res.status(201).send(newPost);
+        return res.redirect('/');
     });
 }
 

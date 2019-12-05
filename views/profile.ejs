@@ -31,7 +31,12 @@
             </div>
             
             <div id="navbar-buttons" class="btn-group d-flex justify-content-center ml-auto" role="group" aria-label="Basic example">
-                <input type="file" id="post-input" style="display: none;" onchange="post()" />
+                <form action="/posts" method="POST" style="display: none;" id="post-form" enctype="text/plain">
+                    <input type="file" id="post-input" onchange="post(event)" />
+                    <input type="hidden" name="image" />
+                    <input type="hidden" name="username" value="<%= username %>" />
+                </form>
+                
 
                 <button
                     type="button"
@@ -92,15 +97,15 @@
     <script src="js/feed.js"></script>
 
     <script>
-        function post() {
-            let ajax = new XMLHttpRequest();
-            ajax.open("POST", "/posts");
-            ajax.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert('DONE');
-                }
+        function post(ev) {
+            let reader = new FileReader();
+            reader.readAsDataURL(ev.target.files[0]);
+            reader.onloadend = (buffer) => {
+                let form = ev.target.parentElement;
+                let inputs = form.querySelectorAll('#post-form input');
+                inputs[1].value = buffer.target.result;
+                form.submit();
             }
-            ajax.send();
         }
     </script>
 </body>
