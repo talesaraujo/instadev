@@ -35,7 +35,7 @@ const createPost = (req, res) => {
             return res.status(409).send({ error: 'User already exists'});
         }
         if (err) {
-            console.log(error);
+            console.log(err);
             return res.status(500).send({ error: "Something else that I'm lazy to figure it out"});
         }
         return res.status(201).send(newPost);
